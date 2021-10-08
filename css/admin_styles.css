@@ -1,0 +1,22 @@
+html{
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+}
+
+/*login page styles*/
+
+	.login-page-main-div{
+		height: 100vh;
+		background: linear-gradient(to right bottom,rgba(20,20,20),rgba(30,30,30),rgba(20,20,20));		
+	}
+
+/*login page styles ends*/

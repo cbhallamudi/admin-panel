@@ -12,62 +12,69 @@ html{
 body{
 }
 
+::placeholder{
+	text-transform: capitalize;
+}
+
 /*login page styles*/
 
 	.login-page-main-div{
 		height: 100vh;
-		background: linear-gradient(to right bottom,rgba(20,20,20),rgba(1,100,100) 40%,rgba(20,20,20));
+		background: radial-gradient(rgb(200, 100, 100), rgb(100,100, 250) 25%, rgb(200, 100, 100),rgb(100,100, 250) 75%);
+		background-size: 400% 400%;
+	    -webkit-animation: login-bg-anim 40s linear forwards;
+	    -moz-animation: login-bg-anim 40s linear forwards;
+	    animation: login-bg-anim 40s linear forwards;
 		display: grid;
 		grid-template-columns: 1fr;
 		justify-items: center;
 		align-items: center;		
-		/*background-position: 50% 50%;*/
-		background-size: 95% 95%;
-		animation-name: "login-bg-anim";
-		animation-duration: 30s;
-		animation-iteration-count: infinite;
-		animation-direction: alternate;
-		animation-timing-function: ease-in;
+		background-repeat: no-repeat;
+
+	}	
+
+	@-webkit-keyframes login-bg-anim {
+	    0%{background-position:10% 0%}
+	    100%{background-position:90% 99%}
+	    /*100%{background-position:10% 0%}*/
 	}
-
-	@keyframes login-bg-anim{
-		0%{
-	
-			background-size: 95% 95%;
-		}
-
-		25%{
-			background-size: 98% 98%;
-		}
-		50%{
-			background-position: 30% 30%;
-		}
-		75%{
-			background-size: 90% 90%;
-		}
-		100%{
-			background-size: 95% 95%;
-			background-position: 0% 0%;
-
-		}
-
-
-
+	@-moz-keyframes login-bg-anim {
+	    0%{background-position:10% 0%}
+	    100%{background-position:90% 99%}
+	    /*100%{background-position:10% 0%}*/
+	}
+	@keyframes login-bg-anim { 
+	    0%{background-position:10% 0%}
+	    50% {
+	    	background-position:90% 99%;
+	    }100% {
+	    	background-position: 56% 27%;
+	    }
+	    /*100%{background-position:10% 0%}*/
 	}
 
 	.login-form{
-		/*background-color: royalblue;*/
+		background-color: rgba(0,0,0,0.2);
 		/*height: 35rem;
-		width: 50%;
-		padding-top: 14rem;*/
+		width: 50%;*/
+		padding: 2.8rem;
 		text-align: center;
+		border: 0.1rem solid #F58453;
+		border-radius: 1rem;
+		box-shadow: 0rem 0rem 0.5rem 0.1rem #F25917;
 	}
 
 	.login-form-group {
 		/*background-color: limegreen;*/
 		padding: 0.5rem 0.5rem;
-		border: 0.1rem solid ghostwhite;
+		border: 0.2rem ridge ghostwhite;
 		border-radius: 0.4rem;
+		outline: none;
+	}
+
+	.login-form-group > .login-form-input-text:focus{
+		color: #f58453;
+		mix-blend-mode:color-burn;
 	}
 
 	.login-form-input-text {
@@ -77,26 +84,40 @@ body{
 		width: 20rem;
 		padding: 0.5rem 0rem;
 		color: ghostwhite;
+		/*mix-blend-mode:color-burn;*/
+	}
+
+	.login-form-label{
+		display: inline-block;
+		background-color: #F58453;
+		mix-blend-mode:screen;
+		padding: 0.5rem;
+		height: 100%;
 	}
 
 	.login-form-icons{
-		color: ghostwhite;
-		font-size: 1.2rem;
+		font-size: 1.5rem;
+
 	}
 
 	.login-btn{
 		width: 10rem;
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 		padding: 0.5em 1em;
 		margin: 0.5rem 0rem;
 		background: #F58453;
 		border: none;
 		border-radius: 0.5rem;
-
+		transition:  all 0.5s;
+		text-transform: uppercase;
+		letter-spacing: 0.2rem;
+		mix-blend-mode:screen;
+		font-weight: 800;
 	}
 
 	.login-btn:hover{
 		background: #F25917;
+		box-shadow: 0rem 0rem 0.5rem 0.1rem #F25917;
 	}
 
 

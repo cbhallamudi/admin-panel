@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Admin Panel</title>
+	<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./fa/css/all.css">
+	<link rel="stylesheet" href="./css/admin_styles.css">
+	<script src="./js/d3.js"></script>
+	<script src="./fa/js/all.js"></script>
+	<script src="./js/admin_js.js"></script>	
+	
+</head>
+<body>
+	
+	<nav class="sidebar" id="sidebar">
+		<button class="toggle-btn">
+			<i class="fas fa-exchange-alt fa-2x" title="toggle" onclick="toggleSidebar()"></i>
+		</button>
+		<figure class="nav-logo">
+			<img onclick="window.location.assign('index.html');" src="./images/logo.jpg" id="nav-logo-img" alt="">
+			<figcaption>admin panel</figcaption>
+		</figure>
+		<ul class="sidebar-navigation">
+			<li class="sidebar-nav-item">
+				<a href="viewPageSettings.html" class="sidebar-nav-link">
+					<i class="fas fa-book-open fa-2x"></i>
+					<span class="side-link-text">content</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="viewPageSettings.html" class="sidebar-nav-link">
+					<i class="fas fa-users fa-2x"></i>
+					<span class="side-link-text">users</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="viewPageSettings.html" class="sidebar-nav-link">
+					<i class="fas fa-list-alt fa-2x"></i>
+					<span class="side-link-text">categories</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="viewPageSettings.html" class="sidebar-nav-link">
+					<i class="fas fa-dolly-flatbed fa-2x"></i>
+					<span class="side-link-text">products</span>
+				</a>
+			</li>
+		</ul>
+		
+		<input type="checkbox" id="settings-link">
+		<input type="checkbox" id="notifications-link">
+		<input type="checkbox" id="messages-link">
+
+		<ul class="sidebar-footer">
+			<label for="settings-link" class="sidebar-footer-item">
+				<span class="sidebar-footer-link">
+					<i class="fas fa-cogs fa-2x"></i>
+					<span class="side-link-text">settings</span>
+				</span>
+			</label>	
+				
+			<label for="notifications-link" class="sidebar-footer-item">
+				<li class="sidebar-footer-item">
+					<span class="sidebar-footer-link">
+						<i class="fas fa-bell fa-2x"></i>
+						<span class="side-link-text">notifications</span>
+					</span>
+				</li>
+			</label>
+			<label for="messages-link" class="sidebar-footer-item">
+				<li class="sidebar-footer-item">
+					<span class="sidebar-footer-link">
+						<i class="fas fa-envelope fa-2x"></i>
+						<span class="side-link-text">messages</span>
+					</span>
+				</li>
+			</label>	
+			<li class="sidebar-footer-item">
+				<a href="#" class="sidebar-footer-link" onclick="window.location.assign('loginPage.html')">
+					<i class="fas fa-sign-out-alt fa-2x"></i>
+					<span class="side-link-text">logout</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="settings-menu" id="settings-menu">
+			<li class="settings-menu-item" id="color-palette-container">
+				
+					<input type="checkbox" id="color-palette-link">
+					<label for="color-palette-link">
+						<span class="settings-menu-link color-palette-link">
+							<span><i class="fas fa-palette"></i> change theme</span>
+						</span>
+					</label>
+					
+					<ul class="color-palette">
+						<li>
+							<span>primary background</span>
+							<input type="color" name="color-palette" id="color-palette">
+						</li>
+						<li>
+							<span>primary color</span>
+							<input type="color" name="color-palette" id="color-palette">
+						</li>
+						<li>
+							<span>page background</span>
+							<input type="color" name="color-palette" id="color-palette">
+						</li>
+					</ul>
+			
+			</li>
+			<li class="settings-menu-item">
+				<a href="#" class="settings-menu-link" onclick="viewChangePwdContent()">
+					<i class="fas fa-key"></i> change password
+				</a>
+			</li>
+			<li class="settings-menu-item">
+				<a href="#" class="settings-menu-link" onclick="viewSiteSettingsContent()">
+					<i class="fas fa-sitemap"></i> site settings
+				</a>
+			</li>
+			<li class="settings-menu-item">
+				<a href="#" class="settings-menu-link" onclick="viewProfileSettingsContent()">
+					<i class="fas fa-id-card"></i> profile settings
+				</a>	
+			</li>
+			<label for="settings-link" class="settings-menu-item">
+				<span class="settings-menu-link">
+					<i class="fas fa-times"></i>
+				</span>
+			</label>	
+		</ul>
+		<ul class="notifications-menu" id="notifications-menu">
+			<li class="notifications-menu-item">
+				<a class="notifications-menu-link" href="#" onclick="close_menu('notifications')">
+					<i class="fas fa-times"></i>
+				</a>
+			</li>
+			<li class="notifications-menu-item">
+				<div class="notification-container">
+				 	
+					<span class="notification-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="notifications-read-link">
+					view notification
+				</a>
+			</li>
+			<li class="notifications-menu-item">
+				<div class="notification-container">
+					<span class="notification-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="notifications-read-link">
+					view notification
+				</a>
+			</li>
+			<li class="notifications-menu-item">
+				<div class="notification-container">
+				 	
+					<span class="notification-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="notifications-read-link">
+					view notification
+				</a>
+			</li>
+			<li class="notifications-menu-item">
+				<div class="notification-container">
+				 	
+					<span class="notification-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="notifications-read-link">
+					view message
+				</a>
+			</li>
+				
+		</ul>
+		<ul class="messages-menu" id="messages-menu">
+			<li class="messages-menu-item">
+				<a class="messages-menu-link" href="#" onclick="close_menu('messages')">
+					<i class="fas fa-times"></i>
+				</a>
+			</li>	
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link" onclick="viewMessageContent(this)">
+					view message
+				</a>
+			</li>
+		</ul>
+	</nav>
+	
+	<main class="main-container">
+		<section class="dashboard-container">
+			<section class="stats">
+				<div class="stat-box">
+					<span>
+						<span class="fas fa-users"></span> users
+					</span>
+					<span class="counter users-counter" id="counter-1">
+						<script>
+							const obj1 = document.getElementById("counter-1");
+							animateValue(obj1, 0, Math.floor(Math.random()*100), 1000);
+						</script>
+					</span>
+				</div>
+				<div class="stat-box">
+					<span>
+						<span class="fas fa-eye"></span> views
+					</span>
+					<span class="counter views-counter" id="counter-2">
+						<script>
+							const obj2 = document.getElementById("counter-2");
+							animateValue(obj2, 0, Math.floor(Math.random()*100), 1000);
+						</script>
+					</span>
+				</div>
+				<div class="stat-box">
+					<span>		
+						<span class="fas fa-shipping-fast"></span>  orders 
+					</span>
+					<span class="counter orders-counter" id="counter-3">
+						<script>
+							const obj3 = document.getElementById("counter-3");
+							animateValue(obj3, 0, Math.floor(Math.random()*100), 1000);
+						</script>
+					</span>
+				</div>
+				<div class="stat-box">
+					<span>
+						<span class="fas fa-warehouse"></span> inventory
+					</span>
+					<span class="counter inventory-counter" id="counter-4">
+						<script>
+							const obj4 = document.getElementById("counter-4");
+							animateValue(obj4, 0, Math.floor(Math.random()*100), 1000);
+						</script>
+					</span>
+				</div>
+			</section>
+			<section class="charts">
+				<div class="charts-header">
+					<div>
+						<h4 class="table-heading">recent orders</h4>
+					</div>
+					<div>
+						<i class="title-bar-icons fas fa-compress-arrows-alt" onclick="minim(this)"></i>
+						<i class="title-bar-icons fas fa-expand-arrows-alt" onclick="maximus(this)"></i>
+					</div>
+				</div>
+				<div class="charts-container">
+					<div id="myPlot" class="charts-class"></div>
+					<div id="myPlot1" class="charts-class"></div>
+					<div class="percentage-changes">
+						<div class="percentage-boxes per-box-1">
+							<span class="percent">
+								<i class="fas fa-caret-up"></i> 
+								<span>12%</span>
+							</span>
+							<span class="percent-amount">
+								<i class="fas fa-rupee-sign"></i> 150666
+							</span>
+							<span class="percent-title">
+								revenue
+							</span>
+						</div>
+						<div class="percentage-boxes per-box-2">
+							<span class="percent">
+								<i class="fas fa-caret-up"></i> <span>26%</span>
+							</span>
+							<span class="percent-amount">
+								<i class="fas fa-rupee-sign"></i> 150666
+							</span>
+
+							<span class="percent-title">
+								sales
+							</span>
+						</div>
+						<div class="percentage-boxes per-box-3">
+							<span class="percent">
+								<i class="fas fa-caret-down"></i> <span>5%</span>
+							</span>
+							<span class="percent-amount">
+								<i class="fas fa-rupee-sign"></i> 150666
+							</span>
+
+							<span class="percent-title">
+								users
+							</span>
+						</div>
+						<div class="percentage-boxes per-box-4">
+							<span class="percent">
+								<i class="fas fa-caret-up"></i> <span>33%</span>
+							</span>
+							<span class="percent-amount">
+								<i class="fas fa-rupee-sign"></i> 150666
+							</span>
+
+							<span class="percent-title">
+								others
+							</span>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<section class="tables">
+				<div class="table-1-container">
+					<div class="tables-header">
+						<div>
+							<h4 class="table-heading">recent orders</h4>
+						</div>
+						<div>
+							<i class="title-bar-icons fas fa-compress-arrows-alt" onclick="minim(this)"></i>
+							<i class="title-bar-icons fas fa-expand-arrows-alt" onclick="maximus(this)"></i>
+						</div>
+					</div>
+					<div class="table table-1">
+						<table class="products-table">
+							<thead>
+								<tr>
+									<th>order id</th>
+									<th>item</th>
+									<th>status</th>
+									<th>action</th>
+								</tr>
+								<tr>
+									<td>OR1988</td>
+									<td>pen-drive</td>
+									<td>
+										<label class="custom-label label-delivered">delivered</label>
+									</td>
+									<td>
+										<i class="fas fa-eye" onclick="viewContent(this)"></i>
+									</td>
+								</tr>
+								<tr>
+									<td>OR1964</td>
+									<td>redmi 10t</td>
+									<td>
+										<label class="custom-label label-pending">pending</label>
+									</td>
+									<td>
+										<i class="fas fa-eye" onclick="viewContent(this)"></i>
+									</td>
+								</tr>
+								<tr>
+									<td>OR2016</td>
+									<td>monster truck</td>
+									<td>
+										<label class="custom-label label-processing">processing</label>
+									</td>
+									<td>
+										<i class="fas fa-eye" onclick="viewContent(this)"></i>
+									</td>
+								</tr>
+								<tr>
+									<td>OR1993</td>
+									<td>crop top</td>
+									<td>
+										<label class="custom-label label-shipped">shipped</label>
+									</td>
+									<td>
+										<i class="fas fa-eye" onclick="viewContent(this)"></i>
+									</td>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+				<div class="table-2-container">
+					<div class="tables-header">
+						<div>
+							<h4 class="table-heading">
+								latest inventory
+							</h4>
+						</div>
+						<div>
+							<i class="title-bar-icons fas fa-compress-arrows-alt" onclick="minim(this)"></i>
+							<i class="title-bar-icons fas fa-expand-arrows-alt" onclick="maximus(this)"></i>
+						</div>
+					
+					</div>
+					<div class="table table-2">
+						<table class="products-table">
+							<thead>
+								<tr>
+									<th>id</th>
+									<th>name</th>
+									<th>qty</th>
+									<th>action</th>
+								</tr>
+								<tr>
+									<td>PDT1988</td>
+									<td>pen-drive</td>
+									<td><label class="label-qty">50</label></td>
+									<td>
+										<i class="fas fa-eye" onclick="viewInventoryContent(this)"></i>
+									</td>
+								</tr>
+								<tr>
+									<td>PDT1964</td>
+									<td>redmi 10t</td>
+									<td><label class="label-qty">100</label></td>
+									<td>
+										<i class="fas fa-eye" onclick="viewInventoryContent(this)"></i>
+									</td>
+								</tr>
+								<tr>
+									<td>PDT2016</td>
+									<td>monster truck</td>
+									<td><label class="label-qty">75</label></td>
+									<td>
+										<i class="fas fa-eye" onclick="viewInventoryContent(this)"></i>
+									</td>
+								</tr>
+								<tr>
+									<td>PDT1993</td>
+									<td>crop top</td>
+									<td><label class="label-qty">125</label></td>
+									<td>
+										<i class="fas fa-eye" onclick="viewInventoryContent(this)"></i>
+									</td>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+				<div class="table-3-container">
+					<div class="tables-header">
+						<div>
+							<h4 class="table-heading">new clients</h4>
+						</div>
+						<div>
+							<i class="title-bar-icons fas fa-compress-arrows-alt" onclick="minim(this)"></i>
+							<i class="title-bar-icons fas fa-expand-arrows-alt" onclick="maximus_profiles(this)"></i>
+						</div>
+					</div>
+					<div class="new-profiles">
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+						<div class="popup" onclick="viewNewProfile(this)">
+							<div class="popuptext">
+								<p>
+									<span>name</span>
+									<span>A</span>
+								</p>
+								<p>
+									<span>email</span>
+									<span>bcd@e.com</span>
+								</p>
+								<p>
+									<span>date joined</span>
+									<span>10<sup>th</sup> november, 2021</span>
+								</p>
+							</div>
+							<img src="./images/logo.jpg" alt="">
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+	</main>	
+
+	<div class="modal order-view-modal" id="order-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">Order</h3>
+			</div>
+			<div class="modal-body">
+				<div class="order-id"><label class="custom-label label-modal">order id</label><p>OR123</p></div>
+				<div class="order-user-name"><label class="custom-label label-modal">user name</label><p>BCV</p></div>
+				<div class="order-user-contact"><label class="custom-label label-modal">contact</label><p>1234567890</p></div>
+				<div class="order-user-email"><label class="custom-label label-modal">email</label><p>bcv@gmail.com</p></div>
+				<div class="order-user-address"><label class="custom-label label-modal">address</label><p>123,abc,4 street,d town. 987654</p></div>
+				<div class="order-user-img">
+					<img src="./images/logo.jpg" width="75" height="75" alt="">
+				</div>
+				<div class="order-product-details">
+					<div class="item-name"><label class="custom-label label-modal">item name</label><p>transend 16GB pendrive</p></div>
+					<div class="item-category"><label class="custom-label label-modal">category</label><p>electronics</p></div>
+					<div class="item-qty"><label class="custom-label label-modal">quantity</label><p>2</p></div>
+					<div class="item-price"><label class="custom-label label-modal">price</label><p>100</p></div>
+					<div class="total-cost"><label class="custom-label label-modal">cost</label><p>200</p></div>
+					<div class="delivery-status">
+						<label for="" class="custom-label label-delivered">delivered</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal inventory-view-modal" id="inventory-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">Inventory</h3>
+			</div>
+			<div class="modal-body">
+				<div class="inventory-id"><label class="custom-label label-modal">product id</label><p>OR123</p></div>
+				<div class="inventory-user-name"><label class="custom-label label-modal">brand name</label><p>BCV</p></div>
+				<div class="inventory-user-contact"><label class="custom-label label-modal">vendor</label><p>1234567890</p></div>
+				<div class="inventory-user-email"><label class="custom-label label-modal">model name</label><p>bcv@gmail.com</p></div>
+				<div class="inventory-user-address"><label class="custom-label label-modal">address</label><p>123,abc,4 street,d town. 987654</p></div>
+				<div class="inventory-item-img">
+					<img src="./images/logo.jpg" width="75" height="75" alt="">
+				</div>
+				<div class="inventory-product-details">
+					<div class="item-name"><label class="custom-label label-modal">item name</label><p>transend 16GB pendrive</p></div>
+					<div class="item-category"><label class="custom-label label-modal">category</label><p>electronics</p></div>
+					<div class="item-qty"><label class="custom-label label-modal">quantity</label><p>2</p></div>
+					<div class="item-price"><label class="custom-label label-modal">price</label><p>100</p></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal change-pwd-view-modal" id="change-pwd-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">change password</h3>
+			</div>
+			<div class="settings-modal-body">
+				<form action="javascript:void(0)" class="change-pwd-form">
+				  	<div class="login-form-group">
+				  		<input class="login-form-input-text" type="password" placeholder="enter new password...">
+				  		<label class="login-form-label">
+				  			<i class="fas fa-key login-form-icons"></i>
+				  		</label> 
+				  	</div>
+				  	<div class="login-form-group">
+				  		<input class="login-form-input-text" type="password" placeholder="confirm new password...">
+				  		<label class="login-form-label">
+				  			<i class="fas fa-key login-form-icons"></i>
+				  		</label> 
+				  	</div>
+				  	<input type="submit" value="change password" class="settings-submit-btn">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal site-settings-view-modal" id="site-settings-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">site settings</h3>
+			</div>
+			<div class="settings-modal-body">
+				<form action="#" class="site-settings-modal-form">
+					<div class="site-settings-left-div">
+						<img src="./images/bcv-logo.png" alt="" id="site-settings-site-logo">
+						<label for="site-settings-logo" class="custom-input-file-label">Browse Site Logo</label>
+						<input type="file" name="site-settings-logo" id="site-settings-logo" onchange="loadFile(event,this.id)">
+						<img id="site-settings-logo-output"/>
+					</div>
+					<div class="site-settings-center-div">
+						<div class="form-group">
+							<label class="form-label">
+								site name
+							</label> 
+							<input class="form-input-text" type="text" placeholder="enter site name...">
+						</div>
+						<div class="form-group">
+							<label class="form-label">
+								site email
+							</label> 
+							<input class="form-input-text" type="text" placeholder="enter site email...">
+						</div>
+						<div class="form-group">
+							<label class="form-label">
+								site contact
+							</label> 
+							<input class="form-input-text" type="text" placeholder="enter site contact...">
+						</div>
+						<div class="form-group">
+							<label class="form-label">
+								site location
+							</label> 
+							<input class="form-input-text" type="text" placeholder="enter location url...">
+						</div>
+						<input type="submit" value="update" class="settings-submit-btn">
+					</div>
+					<div class="site-settings-right-div">
+						<img src="./images/bcv-logo.png" alt="" id="site-settings-fav-icon">
+						<label for="site-fav-icon" class="custom-input-file-label">Browse Titlebar Icon</label>
+						<input type="file" name="site-fav-icon" id="site-fav-icon" onchange="loadFile(event,this.id)">
+						<img id="site-fav-icon-output"/>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal profile-settings-view-modal" id="profile-settings-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">profile settings</h3>
+			</div>
+			<div class="settings-modal-body">
+				<form action="javascript:void(0)" class="profile-settings-modal-form">
+					<div class="profile-settings-left-div">
+						<img src="./images/bcv-logo.png" alt="" id="profile-image">
+						<label for="profile-settings-image" class="custom-input-file-label">Browse Profile Image</label>
+						<input type="file" name="profile-settings-image" id="profile-settings-image" onchange="loadFile(event,this.id)">
+						<img id="profile-settings-image-output"/>
+					</div>
+					<div class="profile-settings-right-div">
+						<div class="form-group">
+							<label class="form-label">
+								name
+							</label> 
+							<input class="form-input-text" type="text" placeholder="enter your name...">
+						</div>
+						<div class="form-group">
+							<label class="form-label">
+								email
+							</label> 
+							<input class="form-input-text" type="text" placeholder="enter your email...">
+						</div>
+						<div class="form-group">
+							<label class="form-label">
+								contact
+							</label> 
+							<input class="form-input-text" type="text" placeholder="enter your contact...">
+						</div>
+						<div class="form-group textarea-group">
+							<label class="form-label">
+								address
+							</label> 
+							<textarea class="form-input-text form-input-textarea"placeholder="enter your address..." rows="10"></textarea>
+						</div>
+						<input type="submit" value="update" class="settings-submit-btn">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal message-content-view-modal" id="message-content-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">message</h3>
+			</div>
+			<div class="message-content-modal-body">
+				<div class="message-content-left-div">
+					
+					<div class="message-content-user-name">
+						<label class="label-msg-not-view">user name</label>
+						<span class="span-msg-not-view">BCV</span>
+					</div>
+					<div class="message-content-user-contact">
+						<label class="label-msg-not-view">contact</label>
+						<span class="span-msg-not-view">1234567890</span>
+					</div>
+					<div class="message-content-user-email">
+						<label class="label-msg-not-view">email</label>
+						<span class="span-msg-not-view">bcv@gmail.com</span>
+					</div>
+					<div class="message-content-msg">
+						<label class="label-msg-not-view">message</label>
+						<textarea class="textarea-msg-not-view" rows="10">Lorem ipsum dolor, sit, amet consectetur adipisicing elit. Asperiores reiciendis laborum molestias officiis, repudiandae amet. Debitis, modi est rerum tempora dolores consectetur quis voluptatum minus veniam cumque rem voluptatem aliquid beatae magnam pariatur officia aspernatur quidem odit eveniet dolor. Officia, quae quis repudiandae reprehenderit vitae illo eos molestias quas velit praesentium, maxime! Animi exercitationem quos doloribus est iste, qui a numquam, dignissimos eligendi unde maiores mollitia quam, dolores pariatur, ex saepe error iure facere eius odit tempora veritatis debitis itaque reiciendis cumque? Molestias nulla officia optio reiciendis perspiciatis accusamus nemo hic mollitia perferendis maiores, a esse tempore. Itaque id, eaque.</textarea>
+					</div>
+				</div>
+				<div class="message-content-right-div">
+					<img src="./images/favicon.ico" alt="" id="message-content-image">	
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+
+
+	
+	<script>
+		var xArray = ["Italy", "France", "Spain", "USA", "Argentina"];
+		var yArray = [55, 49, 44, 24, 15];
+
+		var layout = {title:"World Wide Wine Production",legend: {"orientation": "h"}};
+
+		var data = [{labels:xArray, values:yArray, type:"pie"}];
+
+		Plotly.newPlot("myPlot", data, layout, {displaylogo: false});
+
+		var xValue = ['1st Qt', '2nd Qt', '3rd Qt', '4th Qt'];
+
+		var yValue = [20, 14, 23, 40];
+
+		var trace1 = {
+
+		  x: xValue,
+		  y: yValue,
+		  type: 'bar',
+		  text: yValue.map(String),
+		  textposition: 'auto',
+		  hoverinfo: 'none',
+		  marker: {
+		    color: ['rgba(45,38,204,1)', 'rgba(222,45,38,0.8)', 'rgba(45,204,38,1)', 'rgba(150,38,150,1)', 'rgba(204,204,204,1)'],
+		    opacity: 0.6,
+		    line: {
+		      color: 'rgb(8,48,107)',
+		      width: 1.5
+		    }
+		  }
+		};
+
+		var data = [trace1];
+
+		var layout = {
+		  title: '2021 Quarteryearly Sales Report in Lakhs',
+		  barmode: 'stack'
+		};
+
+		Plotly.newPlot('myPlot1', data, layout);
+	</script>
+	
+</body>
+</html>

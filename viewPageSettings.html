@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Admin Panel</title>
+	<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./fa/css/all.css">
+	<link rel="stylesheet" href="./css/admin_styles.css">
+	<script src="./js/d3.js"></script>
+	<script src="./fa/js/all.js"></script>
+	<script src="./js/admin_js.js"></script>	
+	
+</head>
+<body>
+	<nav class="sidebar" id="sidebar">
+		<button class="toggle-btn">
+			<i class="fas fa-exchange-alt fa-2x" title="toggle" onclick="toggleSidebar()"></i>
+		</button>
+		<figure class="nav-logo">
+			<img onclick="window.location.assign('index.html');" src="./images/logo.jpg" id="nav-logo-img" alt="">
+			<figcaption>admin panel</figcaption>
+		</figure>
+		<ul class="sidebar-navigation">
+			<li class="sidebar-nav-item">
+				<a href="viewPageSettings.html" class="sidebar-nav-link">
+					<i class="fas fa-book-open fa-2x"></i>
+					<span class="side-link-text">content</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="viewPageSettings.html" class="sidebar-nav-link">
+					<i class="fas fa-users fa-2x"></i>
+					<span class="side-link-text">users</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="viewPageSettings.html" class="sidebar-nav-link">
+					<i class="fas fa-list-alt fa-2x"></i>
+					<span class="side-link-text">categories</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="viewPageSettings.html" class="sidebar-nav-link">
+					<i class="fas fa-dolly-flatbed fa-2x"></i>
+					<span class="side-link-text">products</span>
+				</a>
+			</li>
+		</ul>
+		<input type="checkbox" id="settings-link">
+		<input type="checkbox" id="notifications-link">
+		<input type="checkbox" id="messages-link">
+
+		<ul class="sidebar-footer">
+			<label for="settings-link" class="sidebar-footer-item">
+				<span class="sidebar-footer-link">
+					<i class="fas fa-cogs fa-2x"></i>
+					<span class="side-link-text">settings</span>
+				</span>
+			</label>	
+				
+			<label for="notifications-link" class="sidebar-footer-item">
+				<li class="sidebar-footer-item">
+					<span class="sidebar-footer-link">
+						<i class="fas fa-bell fa-2x"></i>
+						<span class="side-link-text">notifications</span>
+					</span>
+				</li>
+			</label>
+			<label for="messages-link" class="sidebar-footer-item">
+				<li class="sidebar-footer-item">
+					<span class="sidebar-footer-link">
+						<i class="fas fa-envelope fa-2x"></i>
+						<span class="side-link-text">messages</span>
+					</span>
+				</li>
+			</label>	
+			<li class="sidebar-footer-item">
+				<a href="#" class="sidebar-footer-link" onclick="window.location.assign('loginPage.html')">
+					<i class="fas fa-sign-out-alt fa-2x"></i>
+					<span class="side-link-text">logout</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="settings-menu" id="settings-menu">
+			<li class="settings-menu-item" id="color-palette-container">
+				
+					<input type="checkbox" id="color-palette-link">
+					<label for="color-palette-link">
+						<span class="settings-menu-link color-palette-link">
+							<span><i class="fas fa-palette"></i> change theme</span>
+						</span>
+					</label>
+					
+					<ul class="color-palette">
+						<li>
+							<span>primary background</span>
+							<input type="color" name="color-palette" id="color-palette">
+						</li>
+						<li>
+							<span>primary color</span>
+							<input type="color" name="color-palette" id="color-palette">
+						</li>
+						<li>
+							<span>page background</span>
+							<input type="color" name="color-palette" id="color-palette">
+						</li>
+					</ul>
+			
+			</li>
+			<li class="settings-menu-item">
+				<a href="#" class="settings-menu-link">
+					<i class="fas fa-key"></i> change password
+				</a>
+			</li>
+			<li class="settings-menu-item">
+				<a href="#" class="settings-menu-link">
+					<i class="fas fa-sitemap"></i> site settings
+				</a>
+			</li>
+			<li class="settings-menu-item">
+				<a href="#" class="settings-menu-link">
+					<i class="fas fa-id-card"></i> profile settings
+				</a>	
+			</li>
+			<label for="settings-link" class="settings-menu-item">
+				<span class="settings-menu-link">
+					<i class="fas fa-times"></i>
+				</span>
+			</label>	
+		</ul>
+		<ul class="notifications-menu" id="notifications-menu">
+			<li class="notifications-menu-item">
+				<a class="notifications-menu-link" href="#" onclick="close_menu('notifications')">
+					<i class="fas fa-times"></i>
+				</a>
+			</li>
+			<li class="notifications-menu-item">
+				<div class="notification-container">
+				 	
+					<span class="notification-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="notifications-read-link">
+					view notification
+				</a>
+			</li>
+			<li class="notifications-menu-item">
+				<div class="notification-container">
+					<span class="notification-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="notifications-read-link">
+					view notification
+				</a>
+			</li>
+			<li class="notifications-menu-item">
+				<div class="notification-container">
+				 	
+					<span class="notification-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="notifications-read-link">
+					view notification
+				</a>
+			</li>
+			<li class="notifications-menu-item">
+				<div class="notification-container">
+				 	
+					<span class="notification-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="notifications-read-link">
+					view message
+				</a>
+			</li>
+				
+		</ul>
+		<ul class="messages-menu" id="messages-menu">
+			<li class="messages-menu-item">
+				<a class="messages-menu-link" href="#" onclick="close_menu('messages')">
+					<i class="fas fa-times"></i>
+				</a>
+			</li>	
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+			<li class="messages-menu-item">
+				<div class="message-container">
+				 	<img class="message-from-img" src="./images/favicon.ico">
+					<span class="message-from-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis dolorum cumque, ex, impedit nulla tempora obcaecati non nemo rerum dolores.</span>
+				</div>	
+		     	<a href="#" class="messages-read-link">
+					view message
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<main class="main-container">
+		<div class="data-tables">
+			<div class="data-table-header">
+				<div class="data-table-navigation">
+					<a href="index.html">dashboard</a>
+					<a href="javascript:void(0))">page</a>
+				</div>	
+				<div class="data-table-headings cms-table">
+					<h4>heading-1</h4>
+					<h4>heading-2</h4>
+					<h4>heading-3</h4>
+					<h4>heading-4</h4>
+				</div>	
+			</div>		
+			<div class="data-table-body">
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>
+				<div class="cms-table">
+					<p>content-1</p>
+					<p>content-2</p>
+					<p>content-3</p>
+					<p>content-4</p>
+				</div>	
+			</div>		
+		</div>
+	</main>
+
+	<div class="modal change-pwd-view-modal" id="change-pwd-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">change password</h3>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal site-settings-view-modal" id="site-settings-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">site settings</h3>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal profile-settings-view-modal" id="profile-settings-view-modal">
+		<div class="modal-box">
+			<div class="modal-header">
+				<h3 class="modal-heading">profile settings</h3>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<button onclick="this.parentNode.parentNode.parentNode.style.display = 'none'" class="modal-close-btn">close</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>		
